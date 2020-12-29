@@ -13,12 +13,16 @@ public class BillManage {
 
     public void showCusByMetCode(String meterCode) {
         Set<String> keyLists = billLists.keySet();
+        boolean testMeterCode = false;
         for (String key : keyLists) {
-            if (key.equals(meterCode)) {
+            testMeterCode = key.equals(meterCode);
+            if (testMeterCode) {
                 int totalMoney = billLists.get(key).getTotalMoney();
                 System.out.println(BILL + totalMoney);
             }
         }
-        System.out.println(NOT_EXITS);
+        if (!testMeterCode) {
+            System.out.println(NOT_EXITS);
+        }
     }
 }
